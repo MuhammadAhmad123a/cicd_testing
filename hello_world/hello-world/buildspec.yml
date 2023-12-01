@@ -6,8 +6,10 @@ phases:
   build:
     commands:
       - echo "install Node.js dependencies"
-      - mkdir dep
-      - npm install log4js --prefix ./dep
+      - npm ci
+    
+    #  - mkdir dep
+    #  - npm install log4js --prefix ./dep
   post_build:
     commands:
       - aws cloudformation package --template-file hello_world.yml --s3-bucket $S3BUCKET --force-upload --output-template-file function-out.yml
